@@ -10,10 +10,22 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            //entityframework_odev();
+            ProductManagerInMemory manager = new ProductManagerInMemory(new InMemoryDal());
+            foreach(var product in manager.GetAll())
+            {
+                Console.WriteLine(product.CarName);
+            }
+
+
+        }
+
+        private static void entityframework_odev()
+        {
             ProductManager manager = new ProductManager
                 (new EFCarDal());
             manager.Add(new Car
-            { 
+            {
                 CarName = "kamyonet",
                 BrandId = 3,
                 ColorId = 2,
@@ -22,12 +34,6 @@ namespace ConsoleUI
                 Description = "3.el"
             }
                 );
-            
-
-            
-                
-
-            
         }
     }
 }

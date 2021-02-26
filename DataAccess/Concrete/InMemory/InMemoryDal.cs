@@ -8,7 +8,7 @@ using System.Text;
 
 namespace DataAccess.Concrete.InMemory
 {
-    public class InMemoryDal : ICarDal
+    public class InMemoryDal : ICarInMemoryDal
     {
         List<Car> _cars;
         public InMemoryDal()
@@ -64,9 +64,9 @@ namespace DataAccess.Concrete.InMemory
             carUpdate.DailyPrice = car.DailyPrice;
         }
 
-        public Car Get(Expression<Func<Car, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
+        //public Car Get(Expression<Func<Car, bool>> filter)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }
