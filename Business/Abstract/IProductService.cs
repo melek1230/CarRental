@@ -8,6 +8,10 @@ namespace Business.Abstract
    public interface IProductService
     {
         List<Car> GetAll();
+        List<Car> GetCarsByBrandId();
+        List<Car> GetCarsByColorId();
+        void Add(Car car);
+
        
     }
 }

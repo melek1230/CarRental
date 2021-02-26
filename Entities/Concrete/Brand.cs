@@ -6,7 +6,8 @@ using System.Text;
 namespace Entities
 {
     public class Brand:IEntity
-    {public int BranId { get; set; }
+    {
+        public int BranId { get; set; }
      public String BrandName { get; set; }
     }
 
