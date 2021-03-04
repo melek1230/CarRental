@@ -1,5 +1,7 @@
-﻿using DataAccess.Abstract;
+﻿using Core.DataAccess.EntityFramework;
+using DataAccess.Abstract;
 using Entities;
+using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -7,7 +9,8 @@ using System.Text;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EFColorDal : IColorDal
+    public class EFColorDal : EFEntityRepositoryBase<Color, NorthwindContext>
+        , IColorDal
     {
         public void Add(Color entity)
         {

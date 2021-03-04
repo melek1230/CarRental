@@ -1,13 +1,14 @@
-﻿using Entities.Abstract;
+﻿
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Core.Entities;
 
-namespace Entities
+namespace Entities.Concrete
 {
     public class Brand:IEntity
     {
-        public int BranId { get; set; }
+        public int BrandId { get; set; }
      public String BrandName { get; set; }
     }
 
