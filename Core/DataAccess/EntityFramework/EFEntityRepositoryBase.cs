@@ -70,5 +70,25 @@ namespace Core.DataAccess.EntityFramework
             throw new NotImplementedException();
         }
 
+        public List<TEntity> GetAll(object p)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public List<TEntity> GetAllByBrand(Expression<Func<TEntity, bool>> filter)
+        //{
+        //    using (TContext context = new TContext())
+        //    {
+        //        return context.Set<TEntity>().Where(filter).ToList();
+        //    }
+        //}
+
+        //public List<TEntity> GetAllByColor(Expression<Func<TEntity, bool>> filter)
+        //{
+        //    using (TContext context = new TContext())
+        //    {
+        //        return context.Set<TEntity>().Where(filter).ToList();
+        //    }
+        //}
     }
 }

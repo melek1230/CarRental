@@ -15,24 +15,71 @@ namespace DataAccess.Concrete.EntityFramework
     public class EFCarDal : EFEntityRepositoryBase<Car, NorthwindContext>
         , ICarDal
     {
-        public void Add(Car entity)
+        
+
+        public List<ProductDetailDto> GetAllByBrand(Expression<Func
+            <Car,bool>> filter)
         {
-            throw new NotImplementedException();
+            using (NorthwindContext context = new NorthwindContext())
+            {
+                var result = filter == null ? 
+                                       from c in context.Cars.Where(filter)
+                                       join b in context.Brands on c.BrandId
+                                       equals b.BrandId
+                                       select new ProductDetailDto
+                                       {
+                                           ProductId=c.CarId,
+                                           CarName = c.CarName,
+                                           DailyPrice = c.DailyPrice,
+                                           BrandName=b.BrandName
+                                       }
+                             : from c in context.Cars
+                               join   b in context.Brands on c.BrandId
+                               equals b.BrandId                        
+                                                       
+                             select new ProductDetailDto
+                             {
+                                 ProductId=c.CarId,
+                                 CarName = c.CarName,
+                                 DailyPrice = c.DailyPrice,
+                                 BrandName=b.BrandName
+
+                             };
+                return result.ToList();
+
+            }
         }
 
-        public void Delete(Car entity)
+        public List<ProductDetailDto> GetAllByColor(Expression<Func<Car, bool>> filter)
         {
-            throw new NotImplementedException();
-        }
+            using (NorthwindContext context = new NorthwindContext())
+            {
+                var result = filter == null ?
+                                        from c in context.Cars.Where(filter)
+                                        join co in context.Colors on c.ColorId
+                                        equals co.ColorId
+                                        select new ProductDetailDto
+                                        {
+                                            ProductId = c.CarId,
+                                            CarName = c.CarName,
+                                            DailyPrice = c.DailyPrice,
+                                            ColorName = co.ColorName,
+                                        }
+                              : from c in context.Cars
+                                join co in context.Colors on c.ColorId
+                                equals co.ColorId
 
-        public Car Get(Expression<Func<Car, bool>> filter)
-        {
-            throw new NotImplementedException();
-        }
+                                select new ProductDetailDto
+                                {
+                                    ProductId = c.CarId,
+                                    CarName = c.CarName,
+                                    DailyPrice = c.DailyPrice,
+                                    ColorName = co.ColorName,
 
-        public List<Car> GetAll()
-        {
-            throw new NotImplementedException();
+                                };
+                return result.ToList();
+
+            }
         }
 
         public List<ProductDetailDto> GetProductDetails()
@@ -63,9 +110,7 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        public void UpDate(Car entity)
-        {
-            throw new NotImplementedException();
-        }
+        
+       
     }
 }

@@ -13,11 +13,22 @@ namespace ConsoleUI
         {
             //entityframework_odev();
             //ProductTest();
-            ProductManager productManager = new ProductManager(new EFCarDal());
-            foreach (var product in productManager.GetProductDetailDtos())
+            ProductManager productManager = new ProductManager
+                (new EFCarDal());
+
+            var result = productManager.GetProductDetailDtos();
+            if (result.Success)
             {
-                Console.WriteLine(product.CarName+"----"+product.BrandName+"----"+product.ColorName+"----"+product.DailyPrice);
+                foreach (var product in result.Data)
+                {
+                    Console.WriteLine(product.CarName + "----" + product.BrandName + "----" + product.ColorName + "----" + product.DailyPrice);
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+
 
         }
 

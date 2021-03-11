@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Constants;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities;
 using Entities.Concrete;
@@ -19,35 +21,62 @@ namespace Business.Concrete
 
         }
 
-        public void Add(Car car)
-        {
-            if (car.CarName.Length >= 2 && car.DailyPrice > 0)
-            {
-                _carDal.Add(car);
-                Console.WriteLine("*****    Araba başarıyla eklendi     ****");
-            }
-            else
-            {
-                Console.WriteLine("lütfen araba ismini minimum 2 karakter ve fiyatını sıfırdan büyük giriniz...");
-            }
-        }
+        //public IResult Add(Car car)
+        //{
+        //    if (car.CarName.Length >= 2 && car.DailyPrice > 0)
+        //    {
+        //        _carDal.Add(car);
+        //        return new SuccessResult(Messages.ProductAdded);
+        //    }
+        //    else
+        //    {
+        //        return new ErrorResult(Messages.ProductNameInvalid);
+        //    }
+        //}
 
-        public List<Car> GetAll()
-        {
-            return _carDal.GetAll();
-        }
+      
+       
 
-        public List<Car> GetCarsByBrandId()
+        public IDataResult<List<ProductDetailDto>> GetCarsByBrandId(int id)
         {
             throw new NotImplementedException();
         }
 
-        public List<Car> GetCarsByColorId()
+       
+
+        public IDataResult<List<ProductDetailDto>> GetCarsByColorId(int id)
         {
             throw new NotImplementedException();
         }
 
         public List<ProductDetailDto> GetProductDetailDtos()
+        {
+            throw new NotImplementedException();
+        }
+
+       
+
+        IDataResult<List<Car>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        IDataResult<List<Car>> IProductService.GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        IDataResult<Car> GetById(int carId)
+        {
+            throw new NotImplementedException();
+        }
+
+        IDataResult<Car> IProductService.GetById(int carId)
+        {
+            throw new NotImplementedException();
+        }
+
+        IDataResult<List<ProductDetailDto>> IProductService.GetProductDetailDtos()
         {
             throw new NotImplementedException();
         }
