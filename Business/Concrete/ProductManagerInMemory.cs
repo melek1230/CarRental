@@ -42,7 +42,10 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-       
+        public IDataResult<List<Car>> GetCarsByBrandName(string brandName)
+        {
+            throw new NotImplementedException();
+        }
 
         public IDataResult<List<ProductDetailDto>> GetCarsByColorId(int id)
         {
@@ -72,6 +75,16 @@ namespace Business.Concrete
         }
 
         IDataResult<Car> IProductService.GetById(int carId)
+        {
+            throw new NotImplementedException();
+        }
+
+        IDataResult<List<Car>> IProductService.GetCarsByBrandId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        IDataResult<List<Car>> IProductService.GetCarsByColorId(int id)
         {
             throw new NotImplementedException();
         }

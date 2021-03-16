@@ -87,10 +87,7 @@ namespace DataAccess.Concrete.EntityFramework
             using (NorthwindContext context = new NorthwindContext())
             {
                 var result = from                             
-                             c in context.Cars 
-                             //join
-                             //o in context.Orders on
-                             //c.CarId equals o.CarId 
+                             c in context.Cars                             
                              join
                              b in context.Brands on
                              c.BrandId equals b.BrandId
@@ -110,7 +107,9 @@ namespace DataAccess.Concrete.EntityFramework
             }
         }
 
-        
-       
+        public List<Rental> GetRentCar(Expression<Func<Car, bool>> filter)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

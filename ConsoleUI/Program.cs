@@ -13,37 +13,60 @@ namespace ConsoleUI
         {
             //entityframework_odev();
             //ProductTest();
-            ProductManager productManager = new ProductManager
-                (new EFCarDal());
+            //newmethod1();
+            
+
+            //araba_listeleme();
+
+            RentalManager rentManager = new RentalManager(new EFRentalDal());
+            var result = rentManager.Add(new Rental { CarId = 1, CustomerId = 2, RentDate = DateTime.Now });
+
+            Console.WriteLine(result.Message);
+        }
+
+        private static void araba_listeleme()
+        {
+            RentalManager rentManager = new RentalManager(new EFRentalDal());
+            var sonuc = rentManager.GetProductDetailDtos();
+
+            foreach (var item in sonuc.Data)
+            {
+                Console.WriteLine(item.CarName + " " + item.RentDate + " " + item.UserName);
+            }
+        }
+
+        private static void newmethod1()
+        {
+            ProductManager productManager = new ProductManager(new EFCarDal(), new BrandManager(new EFBrandDal()));
+
+
 
             var result = productManager.GetProductDetailDtos();
             if (result.Success)
             {
                 foreach (var product in result.Data)
                 {
-                    Console.WriteLine(product.CarName + "----" + product.BrandName + "----" + product.ColorName + "----" + product.DailyPrice);
+                    Console.WriteLine(product.CarName + "----" + product.BrandName + "----" + product.DailyPrice);
                 }
             }
             else
             {
                 Console.WriteLine(result.Message);
             }
-
-
         }
 
         private static void ProductTest()
         {
             ProductManagerInMemory manager = new ProductManagerInMemory(new InMemoryDal());
-            foreach (var product in manager.GetAll())
-            {
-                Console.WriteLine(product.CarName);
-            }
+            //foreach (var product in manager.GetAll().Data)
+            //{
+            //    Console.WriteLine(product.CarName);
+            //}
         }
 
         private static void entityframework_odev()
         {
-            ProductManager manager = new ProductManager(new EFCarDal());
+            ProductManager manager = new ProductManager(new EFCarDal(), new BrandManager(new EFBrandDal()));
             manager.Add(new Car
             {
                 CarName = "kamyonet",

@@ -22,6 +22,10 @@ namespace Business.Concrete
 
 
         }
+        public ProductManager(ICarDal carDal)
+        {
+            _carDal = carDal;
+        }
         public IDataResult<List<Car>> GetByUnitPrice(decimal min,
             decimal max)
         {
@@ -67,16 +71,16 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProductDetailDto>>
                 (_carDal.GetProductDetails());
         }
-        public IDataResult<List<ProductDetailDto>> GetCarsByBrandId(int brand)
+        public IDataResult<List<Car>> GetCarsByBrandId(int brand)
         {
-            return new SuccessDataResult<List<ProductDetailDto>>
-                (_carDal.GetAllByBrand(p => p.BrandId==brand));
+            return new SuccessDataResult<List<Car>>
+                (_carDal.GetAll(p => p.BrandId==brand));
             //(_carDal.GetAllByBrand(p=>p.BrandId==id));
         }
-        public IDataResult<List<ProductDetailDto>> GetCarsByColorId(int id)
+        public IDataResult<List<Car>> GetCarsByColorId(int id)
         {
-            return new SuccessDataResult<List<ProductDetailDto>>
-                (_carDal.GetAllByColor(c=>c.ColorId==id));
+            return new SuccessDataResult<List<Car>>
+                (_carDal.GetAll(c=>c.ColorId==id));
         }
 
         public IDataResult<List<Car>> GetCarsByBrandName(string brandName)

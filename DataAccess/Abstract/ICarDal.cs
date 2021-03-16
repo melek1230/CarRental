@@ -13,6 +13,6 @@ namespace DataAccess.Abstract
         List<ProductDetailDto> GetProductDetails();
         List<ProductDetailDto> GetAllByBrand(Expression<Func<Car, bool>> filter);
         List<ProductDetailDto> GetAllByColor(Expression<Func<Car, bool>> filter);
-
+        List<Rental> GetRentCar(Expression<Func<Car, bool>> filter);
     }
 }
