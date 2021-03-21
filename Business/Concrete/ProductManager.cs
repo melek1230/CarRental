@@ -89,5 +89,7 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Car>>
                 (_carDal.GetAll(c => c.BrandId ==brand.BrandId),Messages.GetSuccess);
         }
+
+       
     }
 }

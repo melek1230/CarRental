@@ -21,6 +21,11 @@ namespace Business.Concrete
 
         }
 
+        public IResult Add(Car car)
+        {
+            throw new NotImplementedException();
+        }
+
         //public IResult Add(Car car)
         //{
         //    if (car.CarName.Length >= 2 && car.DailyPrice > 0)
@@ -34,8 +39,8 @@ namespace Business.Concrete
         //    }
         //}
 
-      
-       
+
+
 
         public IDataResult<List<ProductDetailDto>> GetCarsByBrandId(int id)
         {

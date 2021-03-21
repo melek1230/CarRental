@@ -13,6 +13,7 @@ namespace Business.Abstract
         //void için IResult yazıyoruz
         //Data,mesaj vs  döndürmek için IDataResult yazıyoruz
         IDataResult<List<Car>> GetAll();
+        IResult Add(Car car);
         IDataResult<List<Car>> GetCarsByBrandId(int id);
         IDataResult<List<ProductDetailDto>> GetProductDetailDtos();
         IDataResult<List<Car>> GetCarsByColorId(int id);
