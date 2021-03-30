@@ -1,10 +1,14 @@
 ﻿using Business.Abstract;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.CrossCuttingConcerns;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities;
 using Entities.Concrete;
 using Entities.DTOs;
+using FluentValidation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -34,18 +38,12 @@ namespace Business.Concrete
                 && p.CarName.Length>=2)
                 );
         }
-
+        [ValidationAspect (typeof(ProductValidator))]
         public IResult Add(Car car)
         {
-            if(car.CarName.Length>=2 && car.DailyPrice>0 )
-            {
-                _carDal.Add(car);
-                return new SuccessResult(Messages.ProductAdded);
-            }
-            else
-            {
-                return new ErrorResult(Messages.ProductNameInvalid);
-            }
+           // ValidationTool.Validate(new ProductValidator(), car);                   
+               _carDal.Add(car);
+                return new SuccessResult(Messages.ProductAdded);           
             
         }
 
