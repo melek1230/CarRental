@@ -55,14 +55,14 @@ namespace ConsoleUI
             }
         }
 
-        private static void ProductTest()
-        {
-            ProductManagerInMemory manager = new ProductManagerInMemory(new InMemoryDal());
-            //foreach (var product in manager.GetAll().Data)
-            //{
-            //    Console.WriteLine(product.CarName);
-            //}
-        }
+        //private static void ProductTest()
+        //{
+        //    ProductManagerInMemory manager = new ProductManagerInMemory(new InMemoryDal());
+        //    //foreach (var product in manager.GetAll().Data)
+        //    //{
+        //    //    Console.WriteLine(product.CarName);
+        //    //}
+        //}
 
         private static void entityframework_odev()
         {
